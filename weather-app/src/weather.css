@@ -1,0 +1,97 @@
+/* 🌨️ Snow */
+.snow-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* 터치/클릭 막지 않음 */
+    overflow: hidden;
+}
+
+.snow {
+    position: absolute;
+    top: -10px;
+    color: white;
+    font-size: 18px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+/* 🌧️ Rain */
+.rain-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.rain {
+    position: absolute;
+    width: 2px;
+    height: 15px;
+    background: rgba(255,255,255,0.6);
+    top: -20px;
+    animation: rain-fall linear infinite;
+}
+
+@keyframes rain-fall {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* ⛈️ Thunder */
+.thunder-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.theme-thunder{
+    background: linear-gradient(182deg, #54687d, #222a69);
+}
+
+/* 번개 전체 깜빡임 */
+.lightning-flash {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0;
+    animation: flash 4s infinite;
+}
+
+@keyframes flash {
+    0%, 96%, 100% { opacity: 0; }
+    97% { opacity: 0.7; }
+    98% { opacity: 0.3; }
+    99% { opacity: 0.9; }
+}
+
+/* 번개 모양 */
+.lightning-bolt {
+    position: absolute;
+    top: -100px;
+    width: 8px;
+    height: 150px;
+    background: linear-gradient(to bottom, #fff, #ffeb3b, #ff9800);
+    clip-path: polygon(30% 0%, 60% 0%, 40% 40%, 70% 40%, 20% 100%, 50% 55%, 20% 55%);
+    opacity: 0;
+    animation: bolt 4s infinite;
+}
+
+@keyframes bolt {
+    0%, 95%, 100% { opacity: 0; transform: translateY(-100px) scale(0.8); }
+    96% { opacity: 1; transform: translateY(50px) scale(1); }
+    97% { opacity: 1; transform: translateY(150px) scale(1.1); }
+    98% { opacity: 0; transform: translateY(300px) scale(0.9); }
+}

@@ -141,7 +141,25 @@ export default function App() {
         return "🌡️";
     };
 
-    const theme = weather.weathercode === 2 ? "thunder" : "clear";
+    const OnClick = () => {
+        console.log(10)
+    }
+
+    const theme =
+    weather.weathercode === 0 || weather.weathercode === 1
+    ? "clear"   // 맑음
+    : weather.weathercode === 2
+    ? "cloud"   // 구름 조금
+    : weather.weathercode === 3
+    ? "cloudy"  // 흐림
+    : weather.weathercode >= 51 && weather.weathercode <= 67
+    ? "rain"    // 비
+    : weather.weathercode >= 71 && weather.weathercode <= 77
+    ? "snow"    // 눈
+    : weather.weathercode >= 95 && weather.weathercode <= 99
+    ? "thunder" // 천둥번개
+    : "clear";  // 기본값
+
 
     return (
         <div className={`app theme-${theme}`}>
@@ -184,7 +202,10 @@ export default function App() {
 
                 <div className="extended-info">
                     <h4>📅 주간 예보</h4>
-                    <div className="forecast-list">
+                    <div
+                        className="forecast-list"
+                        onClick={OnClick}
+                    >
                         {forecast.map((f, idx) => (
                             <div key={idx} className="forecast-list-card">
                                 <div className="forecast-date">
